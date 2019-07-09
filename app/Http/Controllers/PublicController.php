@@ -10,4 +10,10 @@ class PublicController extends Controller
     {
         return view('front-end.home.homeContent');
     }
+
+    public function test() {
+        return view('back-end.admin.home.dashboard');
+    }
+
+
 }
