@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
             'role_id' => 1,
             'name' => 'Mr. Admin',
             'email' => 'admin@gmail.com',
-            'password' => 'rootadmin',
+            'password' => bcrypt('rootadmin'),
             'about' => 'This is admin here'
         ]);
 
@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
             'role_id' => 2,
             'name' => 'Mr. Author',
             'email' => 'author@gmail.com',
-            'password' => 'rootauthor',
+            'password' => bcrypt('rootauthor'),
             'about' => 'This is author here'
         ]);
 
@@ -31,7 +31,7 @@ class UsersTableSeeder extends Seeder
             'role_id' => 3,
             'name' => 'Mr. User',
             'email' => 'user@gmail.com',
-            'password' => 'rootuser',
+            'password' => bcrypt('rootuser'),
             'about' => 'This is user here'
         ]);
 

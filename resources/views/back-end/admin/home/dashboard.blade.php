@@ -1,4 +1,7 @@
 @extends('back-end.master')
+@section('title')
+Dashboard : Admin
+@endsection
 
 @section('mainContent')
    <!-- Page Heading -->
