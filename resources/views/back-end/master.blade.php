@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Dashboard</title>
+  <title>@yield('title')</title>
 
   <!-- Custom fonts for this template-->
   <link href="{{ asset('assets/back-end/') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,8 @@
         <!-- Topbar -->
         @include('back-end.includes.topBar')
         <!-- End of Topbar -->
-
+  
+        <br/>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
