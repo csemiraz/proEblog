@@ -18,6 +18,9 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('assets/back-end/') }}/css/sb-admin-2.min.css" rel="stylesheet">
 
+  <!--- Data Tables --->
+  <link rel="stylesheet" href="{{ asset('assets/DataTables/datatables.min.css') }}">
+
 </head>
 
 <body id="page-top">
@@ -85,6 +88,15 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('assets/back-end/') }}/js/demo/chart-area-demo.js"></script>
   <script src="{{ asset('assets/back-end/') }}/js/demo/chart-pie-demo.js"></script>
+
+  <!--- Data Tables Js --->
+  <script src="{{ asset('assets/DataTables/datatables.min.js') }}"></script>
+
+  <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    } );
+  </script>
 
 </body>
 
