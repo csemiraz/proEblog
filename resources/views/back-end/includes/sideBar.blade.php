@@ -41,6 +41,12 @@
       </div>
     </li>
 
+     <li class="nav-item">
+      <a class="nav-link" href="{{ route('manage-tag') }}">
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Manage Tag</span></a>
+    </li>
+
     <!-- Nav Item - Charts -->
     <li class="nav-item">
       <a class="nav-link" href="charts.html">

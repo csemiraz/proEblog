@@ -21,6 +21,11 @@
   <!--- Data Tables --->
   <link rel="stylesheet" href="{{ asset('assets/DataTables/datatables.min.css') }}">
 
+  <!--- Toastr CSS --->
+  <link rel="stylesheet" href="{{ asset('assets/toastr/toastr.min.css') }}">
+
+  
+
 </head>
 
 <body id="page-top">
@@ -92,11 +97,66 @@
   <!--- Data Tables Js --->
   <script src="{{ asset('assets/DataTables/datatables.min.js') }}"></script>
 
+  <!---- Toastr Js ----->
+  <script src="{{ asset('assets/toastr/toastr.min.js') }}"></script>
+
+  <!---- SweetAlert2 Js ----->
+  <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
+
+  <!---- Plugin related js  ----->
+  <script src="{{ asset('assets/js/plugin.js') }}"></script>
+
+
+  {!! Toastr::message() !!}
+
   <script>
-    $(document).ready( function () {
-    $('#myTable').DataTable();
-    } );
+    @if($errors->any())
+      @foreach($errors->all() as $error)
+        toastr.error('{{ $error }}', 'Error', {
+          closeButton:true,
+          progressBar:true,
+        })
+      @endforeach
+    @endif
   </script>
+
+  <!------- SweetAlert2 script ----->
+    <script type="text/javascript">
+    function deleteData(id) {
+      const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false,
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure to delete?',
+      text: "You won't be able to get back this!",
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        event.preventDefault();
+        document.getElementById('delete-data-'+id).submit();
+      } else if (
+        // Read more about handling dismissals
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your data is safe :)',
+          'error'
+        )
+      }
+    })
+    }
+  </script>
+
 
 </body>
 

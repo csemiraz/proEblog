@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Image;
@@ -62,6 +63,8 @@ class CategoryController extends Controller
     	$category->image = $imageName;
     	$category->status = $request->status;
     	$category->save();
+
+        Toastr::success('Category info saved successfully..', 'Success');
 
     	return redirect()->back()->with('message', 'Category info saved successfully');
     }
