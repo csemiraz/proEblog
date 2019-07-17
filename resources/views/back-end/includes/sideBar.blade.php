@@ -47,6 +47,12 @@
         <span>Manage Tag</span></a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('manage-post') }}">
+        <i class="fas fa-fw fa-database"></i>
+        <span>Manage Post</span></a>
+    </li>
+
     <!-- Nav Item - Charts -->
     <li class="nav-item">
       <a class="nav-link" href="charts.html">

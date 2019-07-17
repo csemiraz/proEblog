@@ -35,6 +35,22 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 	Route::get('tag/publish-tag/{id}', 'TagController@publishTag')->name('publish-tag');
 	Route::get('tag/unpublish-tag/{id}', 'TagController@unpublishTag')->name('unpublish-tag');
 	Route::post('tag/delete-tag/{id}', 'TagController@deleteTag')->name('delete-tag');
+
+	/*  Posrt Routing  */
+	Route::get('post/manage-post', 'PostController@managePost')->name('manage-post');
+	Route::get('post/add-post', 'PostController@addPost')->name('add-post');
+	Route::post('post/store-post', 'PostController@storePost')->name('store-post');
+	Route::get('post/edit-post/{id}', 'PostController@editPost')->name('edit-post');
+	Route::post('post/update-post', 'PostController@updatePost')->name('update-post');
+	Route::get('post/publish-post/{id}', 'PostController@publishPost')->name('publish-post');
+	Route::get('post/unpublish-post/{id}', 'PostController@unpublishPost')->name('unpublish-post');
+	Route::post('post/delete-post/{id}', 'PostController@deletePost')->name('delete-post');
+	Route::get('post/details-post/{id}', 'PostController@detailsPost')->name('details-post');
+	Route::get('post/approve-post/{id}', 'PostController@approvePost')->name('approve-post');
+
+
+
+
 });
 
 

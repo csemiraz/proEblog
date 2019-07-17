@@ -24,6 +24,9 @@
   <!--- Toastr CSS --->
   <link rel="stylesheet" href="{{ asset('assets/toastr/toastr.min.css') }}">
 
+  <!------ Bootstrap select css---->
+  <link rel="stylesheet" href="{{ asset('assets/bootstrap-select/bootstrap-select.min.css') }}">
+
   
 
 </head>
@@ -103,6 +106,12 @@
   <!---- SweetAlert2 Js ----->
   <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
+  <!----- Ckeditor 5 js ---->
+  <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+
+  <!------ Bootstrap select js---->
+  <script src="{{ asset('assets/bootstrap-select/bootstrap-select.min.js') }}"></script>
+
   <!---- Plugin related js  ----->
   <script src="{{ asset('assets/js/plugin.js') }}"></script>
 
@@ -156,6 +165,19 @@
     })
     }
   </script>
+
+
+<!----- Ckeditor script ---->
+    <script>
+      ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .then( editor => {
+            console.log( editor );
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+    </script>
 
 
 </body>

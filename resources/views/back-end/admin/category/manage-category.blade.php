@@ -45,8 +45,8 @@
 									<a href="{{ route('unpublish-category', ['id'=>$category->id]) }}" class="badge badge-warning">unpublish</a>
 									@endif
 									<a href="{{ route('edit-category', ['id'=>$category->id]) }}" class="badge badge-secondary">edit</a>
-									<a href="" class="badge badge-danger" onclick="event.preventDefault(); document.getElementById('delete-data').submit();">delete</a>
-									<form id="delete-data" action="{{ route('delete-category', ['id'=>$category->id]) }}" method="post" style="display: none;">
+									<a href="" class="badge badge-danger" onclick="event.preventDefault(); document.getElementById('delete-data-{{ $category->id }}').submit();">delete</a>
+									<form id="delete-data-{{ $category->id }}" action="{{ route('delete-category', ['id'=>$category->id]) }}" method="post" style="display: none;">
 										@csrf
 									</form>
 								</td>
