@@ -37,78 +37,30 @@ HOME
 
         <!-- Blog Grid -->
         <div class="card-deck card-deck-2-columns mt-3">
+
+          @foreach($posts as $post)
           <div class="card card-blog">
-            <a href="blog-single.html" class="zoom-hover"><img src="{{ asset('assets/front-end/') }}/img/blog/1.jpg" alt="Blog"></a>
+            <a href="" class="zoom-hover"><img src="{{ asset('assets/images/post/'.$post->image) }}" alt="{{ $post->title }}"></a>
             <div class="card-body">
-              <a href="blog-single.html" class="title h4">5 Coolest Winter Outfits You Can Steal</a>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam consequuntur eligendi a aut fugit nam.</span>
+              <a href="" class="title h4">{{ $post->title }}</a>
+              <span>{!! $post->description !!}</span>
             </div>
             <div class="card-footer flex-center">
               <div class="small text-muted counter">
                 <i data-feather="heart"></i> 55
                 <i data-feather="message-square" class="ml-3"></i> 15
               </div>
-              <a href="blog-single.html" class="bold">READ MORE</a>
+              <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="bold">READ MORE</a>
             </div>
           </div>
-          <div class="card card-blog">
-            <a href="blog-single.html" class="zoom-hover"><img src="{{ asset('assets/front-end/') }}/img/blog/2.jpg" alt="Blog"></a>
-            <div class="card-body">
-              <a href="blog-single.html" class="title h4">How to Pick the Right Men's Shirt</a>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam consequuntur eligendi a aut fugit nam.</span>
-            </div>
-            <div class="card-footer flex-center">
-              <div class="small text-muted counter">
-                <i data-feather="heart"></i> 55
-                <i data-feather="message-square" class="ml-3"></i> 15
-              </div>
-              <a href="blog-single.html" class="bold">READ MORE</a>
-            </div>
-          </div>
-          <div class="card card-blog">
-            <a href="blog-single.html" class="zoom-hover"><img src="{{ asset('assets/front-end/') }}/img/blog/3.jpg" alt="Blog"></a>
-            <div class="card-body">
-              <a href="blog-single.html" class="title h4">5 Simple Outfits for Men</a>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam consequuntur eligendi a aut fugit nam.</span>
-            </div>
-            <div class="card-footer flex-center">
-              <div class="small text-muted counter">
-                <i data-feather="heart"></i> 55
-                <i data-feather="message-square" class="ml-3"></i> 15
-              </div>
-              <a href="blog-single.html" class="bold">READ MORE</a>
-            </div>
-          </div>
-          <div class="card card-blog">
-            <a href="blog-single.html" class="zoom-hover"><img src="{{ asset('assets/front-end/') }}/img/blog/4.jpg" alt="Blog"></a>
-            <div class="card-body">
-              <a href="blog-single.html" class="title h4">Business Casual Outfit Ideas</a>
-              <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam consequuntur eligendi a aut fugit nam.</span>
-            </div>
-            <div class="card-footer flex-center">
-              <div class="small text-muted counter">
-                <i data-feather="heart"></i> 55
-                <i data-feather="message-square" class="ml-3"></i> 15
-              </div>
-              <a href="blog-single.html" class="bold">READ MORE</a>
-            </div>
-          </div>
+          @endforeach
+
         </div>
         <!-- /Blog Grid -->
 
         <!-- Pagination -->
-        <div class="card card-pagination">
-          <div class="card-body">
-            <a href="javascript:void(0)" class="btn btn-link btn-icon"><i data-feather="chevron-left"></i></a>
-            <div class="d-inline-flex">
-              <a href="javascript:void(0)" class="btn btn-icon rounded-pill btn-light">1</a>
-              <a href="javascript:void(0)" class="btn btn-icon rounded-pill btn-primary">2</a>
-              <a href="javascript:void(0)" class="btn btn-icon rounded-pill btn-light">3</a>
-              <button type="button" class="btn btn-icon rounded-pill bg-white">...</button>
-              <a href="javascript:void(0)" class="btn btn-icon rounded-pill btn-light">10</a>
-            </div>
-            <a href="javascript:void(0)" class="btn btn-link btn-icon"><i data-feather="chevron-right"></i></a>
-          </div>
+        <div>
+          {{ $posts->links() }}
         </div>
         <!-- /Pagination -->
 
@@ -154,18 +106,26 @@ HOME
 
         <div class="card mt-3">
           <div class="card-header bg-white border-bottom bold roboto-condensed">
+            <h5 class="bold mb-0">POPULAR <span class="text-primary">CATEGORIES</span></h5>
+          </div>
+          <div class="card-body">
+            <div class="btn-group-scatter">
+              @foreach($categories as $category)
+              <a href="javascript:void(0)" class="btn btn-light rounded-pill">{{ $category->name }}</a>
+              @endforeach
+            </div>
+          </div>
+        </div>
+
+        <div class="card mt-3">
+          <div class="card-header bg-white border-bottom bold roboto-condensed">
             <h5 class="bold mb-0">POPULAR <span class="text-primary">TAGS</span></h5>
           </div>
           <div class="card-body">
             <div class="btn-group-scatter">
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill">Design</a>
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill">Fashion</a>
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill">Beauty</a>
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill">Travel</a>
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill">Sport</a>
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill active">Active tag</a>
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill">Cooking</a>
-              <a href="javascript:void(0)" class="btn btn-light rounded-pill">Technology</a>
+              @foreach($tags as $tag)
+              <a href="javascript:void(0)" class="btn btn-light rounded-pill">{{ $tag->name }}</a>
+              @endforeach
             </div>
           </div>
         </div>

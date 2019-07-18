@@ -1,12 +1,6 @@
 <div class="topbar">
     <div class="container d-flex">
 
-      <!-- service contact -->
-      <nav class="nav d-none d-md-flex"> <!-- hidden on xs -->
-        <a class="nav-link pl-0" href="javascript:void(0)"><i data-feather="phone"></i> 212 123 456 789</a>
-        <a class="nav-link" href="javascript:void(0)"><i data-feather="mail"></i> support@mimity.com</a>
-      </nav>
-
       <!-- social media -->
       <nav class="nav">
         <a class="nav-link pr-2 pl-0" href="javascript:void(0)"><i data-feather="facebook"></i></a>

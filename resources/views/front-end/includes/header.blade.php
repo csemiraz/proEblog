@@ -5,7 +5,7 @@
       <a class="nav-link nav-icon ml-ni nav-toggler mr-3 d-flex d-lg-none" href="#" data-toggle="modal" data-target="#menuModal"><i data-feather="menu"></i></a>
 
       <!-- Logo -->
-      <a class="nav-link nav-logo" href="index-2.html"><img src="{{ asset('assets/front-end/') }}/img/logo.svg" alt="Mimity"> <strong>Mimity</strong></a>
+      <a class="nav-link nav-logo" href="{{ route('/') }}"><img src="" alt=""> <strong>W3Blog</strong></a>
 
       <!-- Main navigation -->
       <ul class="nav nav-main ml-auto d-none d-lg-flex"> <!-- hidden on md -->
@@ -133,66 +133,7 @@
       <ul class="nav ml-auto ml-sm-0">
         <!-- Search form toggler -->
         <li class="nav-item d-block d-sm-none ml-2 ml-lg-0"><a class="nav-link nav-icon search-toggle" href="#"><i data-feather="search"></i></a></li>
-
-        <!-- Cart dropdown -->
-        <li class="nav-item dropdown dropdown-hover dropdown-cart">
-          <a class="nav-link nav-icon mr-nis dropdown-toggle forwardable ml-2" data-toggle="dropdown" href="cart.html" role="button" aria-haspopup="true" aria-expanded="false">
-            <i data-feather="shopping-cart"></i>
-            <span class="badge badge-primary">4</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            
-            <div class="media">
-              <a href="shop-single.html"><img src="{{ asset('assets/front-end/') }}/img/products/1_small.jpg" width="50" height="50" alt="Hanes Hooded Sweatshirt"></a>
-              <div class="media-body">
-                <a href="shop-single.html" title="Hanes Hooded Sweatshirt">Hanes Hooded Sweatshirt</a>
-                <span class="qty">1</span> x <span class="price">$18.56</span>
-                <button type="button" class="close" aria-label="Close"><i data-feather="x-circle"></i></button>
-              </div>
-            </div>
-            
-            <div class="media">
-              <a href="shop-single.html"><img src="{{ asset('assets/front-end/') }}/img/products/2_small.jpg" width="50" height="50" alt="The Flash Logo T-Shirt"></a>
-              <div class="media-body">
-                <a href="shop-single.html" title="The Flash Logo T-Shirt">The Flash Logo T-Shirt</a>
-                <span class="qty">1</span> x <span class="price">$16.64</span>
-                <button type="button" class="close" aria-label="Close"><i data-feather="x-circle"></i></button>
-              </div>
-            </div>
-            
-            <div class="media">
-              <a href="shop-single.html"><img src="{{ asset('assets/front-end/') }}/img/products/3_small.jpg" width="50" height="50" alt="Open Front Cropped Cardigans"></a>
-              <div class="media-body">
-                <a href="shop-single.html" title="Open Front Cropped Cardigans">Open Front Cropped Cardigans</a>
-                <span class="qty">1</span> x <span class="price">$15.20</span>
-                <button type="button" class="close" aria-label="Close"><i data-feather="x-circle"></i></button>
-              </div>
-            </div>
-            
-            <div class="media">
-              <a href="shop-single.html"><img src="{{ asset('assets/front-end/') }}/img/products/4_small.jpg" width="50" height="50" alt="Cotton Fleece Long Hoodie"></a>
-              <div class="media-body">
-                <a href="shop-single.html" title="Cotton Fleece Long Hoodie">Cotton Fleece Long Hoodie</a>
-                <span class="qty">1</span> x <span class="price">$85.00</span>
-                <button type="button" class="close" aria-label="Close"><i data-feather="x-circle"></i></button>
-              </div>
-            </div>
-            
-            <div class="d-flex justify-content-between pb-3 pt-2">
-              <span>Total</span>
-              <strong>$135.40</strong>
-            </div>
-            <div class="d-flex justify-content-between pb-2">
-              <div class="w-100 mr-1">
-                <a href="cart.html" class="btn btn-block rounded-pill btn-secondary">View Cart</a>
-              </div>
-              <div class="w-100 ml-1">
-                <a href="shipping.html" class="btn btn-block rounded-pill btn-primary">Checkout</a>
-              </div>
-            </div>
-          </div>
-        </li>
-        <!-- /Cart dropdown -->
+        
       </ul>
 
     </div><!-- /.container -->

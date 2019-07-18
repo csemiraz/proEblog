@@ -66,4 +66,4 @@
       </div>
     </div>
   </div>
-  <div class="copyright">Copyright © 2018 Mimity All right reserved</div>
+  <div class="copyright">Copyright © 2019 W3Blog All right reserved</div>

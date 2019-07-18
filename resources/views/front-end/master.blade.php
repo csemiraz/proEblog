@@ -22,6 +22,9 @@
     <!-- Mimity CSS  -->
     <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/dist/css/style.min.css">
 
+    <!--- Toastr CSS --->
+    <link rel="stylesheet" href="{{ asset('assets/toastr/toastr.min.css') }}">
+
   </head>
   <body>
 
@@ -120,6 +123,9 @@
     <!-- Mimity JS  -->
     <script src="{{ asset('assets/front-end/') }}/dist/js/script.min.js"></script>
 
+    <!---- Toastr Js ----->
+    <script src="{{ asset('assets/toastr/toastr.min.js') }}"></script>
+
     <script>
     $(function () {
 
@@ -138,6 +144,19 @@
 
     })
     </script>
+
+  {!! Toastr::message() !!}
+
+  <script>
+    @if($errors->any())
+      @foreach($errors->all() as $error)
+        toastr.error('{{ $error }}', 'Error', {
+          closeButton:true,
+          progressBar:true,
+        })
+      @endforeach
+    @endif
+  </script>
 
   </body>
 </html>

@@ -19,9 +19,10 @@
     </li>
 
 
+    <!-- Admin Panel start -->
     <!-- Divider -->
+    @if(Auth::user()->role_id==1)
     <hr class="sidebar-divider">
-
     <!-- Heading -->
     <div class="sidebar-heading">
       Admin
@@ -53,12 +54,30 @@
         <span>Manage Post</span></a>
     </li>
 
-    <!-- Nav Item - Charts -->
+    @endif
+
+      <!-- Admin Panel End -->
+
+
+    <!-- Author Panel Start -->
+    <!-- Divider -->
+    @if(Auth::user()->role_id==2)
+    <hr class="sidebar-divider">
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      Author
+    </div>
+
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
+      <a class="nav-link" href="{{ route('author.manage-post') }}">
+        <i class="fas fa-fw fa-database"></i>
+        <span>Manage Post</span></a>
     </li>
+
+    @endif
+
+      <!-- Author Panel End -->
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

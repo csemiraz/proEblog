@@ -6,11 +6,14 @@
 |--------------------------------------------------------------------------
 */
 
-/* Base Routing */
-Route::get('/', 'PublicController@index');
 
+/*  Auth Routing  */
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+/* Base Routing and Public Routing */
+Route::get('/', 'PublicController@index')->name('/');
+Route::get('post/{id}/{slug}', 'PublicController@singlePost')->name('single-post');
+Route::post('post/post-comment', 'CommentController@commentPost')->middleware('auth')->name('post-comment');
 
 /* Admin Routing */
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'admin']], function() {
@@ -59,6 +62,18 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 /* Author Routing */
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'Author', 'middleware'=>['auth', 'author']], function() {
 	Route::get('dashboard', 'AuthorController@index')->name('dashboard');
+
+		/*  Posrt Routing  */
+	Route::get('post/manage-post', 'PostController@managePost')->name('manage-post');
+	Route::get('post/add-post', 'PostController@addPost')->name('add-post');
+	Route::post('post/store-post', 'PostController@storePost')->name('store-post');
+	Route::get('post/edit-post/{id}', 'PostController@editPost')->name('edit-post');
+	Route::post('post/update-post', 'PostController@updatePost')->name('update-post');
+	Route::get('post/publish-post/{id}', 'PostController@publishPost')->name('publish-post');
+	Route::get('post/unpublish-post/{id}', 'PostController@unpublishPost')->name('unpublish-post');
+	Route::post('post/delete-post/{id}', 'PostController@deletePost')->name('delete-post');
+	Route::get('post/details-post/{id}', 'PostController@detailsPost')->name('details-post');
+
 });
 
 /* User Routing */
