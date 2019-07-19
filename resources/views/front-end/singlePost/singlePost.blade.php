@@ -62,7 +62,7 @@ Post : Single Post
                     <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
                   </div>
                   <p>{{ $comment->comment }}</p>
-                  <hr>
+                  
                 </div>
               </div>
               @endforeach

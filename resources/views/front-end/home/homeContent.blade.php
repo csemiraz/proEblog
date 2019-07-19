@@ -13,7 +13,7 @@ HOME
 <div class="container my-3">
     <div class="row">
 
-      <div class="col">
+      <div class="col-md-8">
 
         <!-- Blog Toolbar -->
         <div class="card">
@@ -35,33 +35,39 @@ HOME
         </div>
         <!-- /Blog Toolbar -->
 
-        <!-- Blog Grid -->
+       
+          
+            <!-- Blog Grid -->
+         
         <div class="card-deck card-deck-2-columns mt-3">
 
           @foreach($posts as $post)
           <div class="card card-blog">
-            <a href="" class="zoom-hover"><img src="{{ asset('assets/images/post/'.$post->image) }}" alt="{{ $post->title }}"></a>
+            <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="zoom-hover"><img src="{{ asset('assets/images/post/'.$post->image) }}" alt="{{ $post->title }}"></a>
             <div class="card-body">
-              <a href="" class="title h4">{{ $post->title }}</a>
-              <span>{!! $post->description !!}</span>
+              <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="title h4">{{ $post->title }}</a>
+
+              <span>{{ Str::limit($post->description, 30) }}</span>
+
             </div>
             <div class="card-footer flex-center">
               <div class="small text-muted counter">
                 <i data-feather="heart"></i> 55
-                <i data-feather="message-square" class="ml-3"></i> 15
+                <i data-feather="message-square" class="ml-3"></i> {{ $post->comments->count() }}
               </div>
               <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="bold">READ MORE</a>
             </div>
           </div>
+       
           @endforeach
-
         </div>
         <!-- /Blog Grid -->
+        
 
         <!-- Pagination -->
-        <div>
+       
           {{ $posts->links() }}
-        </div>
+        
         <!-- /Pagination -->
 
       </div>
@@ -136,3 +142,4 @@ HOME
   </div>
   <!-- /Main Content -->
 @endsection
+

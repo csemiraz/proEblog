@@ -38,11 +38,14 @@
 								<input type="text" name="title" class="form-control">
 							</div>
 						</div>
+
 						<div class="form-group row">
 							<label class="col-form-label col-md-3">Description</label>
 							<div class="col-md-9">
-								<textarea id="editor" name="description" class="form-control"></textarea>
+								<textarea id="" name="description" class="form-control"></textarea>
 							</div>
+
+	
 						</div>
 						<div class="form-group row">
 							<label class="col-form-label col-md-3">Image</label>

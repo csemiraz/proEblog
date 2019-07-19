@@ -27,6 +27,12 @@
   <!------ Bootstrap select css---->
   <link rel="stylesheet" href="{{ asset('assets/bootstrap-select/bootstrap-select.min.css') }}">
 
+
+    <!-- Ck Editor -->
+    <link rel="stylesheet" href="{{ asset('assets/ckeditor/samples/css/samples.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}">
+    
+
   
 
 </head>
@@ -106,11 +112,19 @@
   <!---- SweetAlert2 Js ----->
   <script src="{{ asset('assets/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
-  <!----- Ckeditor 5 js ---->
-  <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
 
   <!------ Bootstrap select js---->
   <script src="{{ asset('assets/bootstrap-select/bootstrap-select.min.js') }}"></script>
+
+  <!------ Tiny MCE JS  ------->
+  <script src="{{ asset('assets/tinymce/js/tinymce/tinymce.min.js') }}"></script>
+
+  <!------ Ck editor js ----->
+  <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+  <script src="{{ asset('assets/ckeditor/samples/js/sample.js') }}"></script>
+
+
+
 
   <!---- Plugin related js  ----->
   <script src="{{ asset('assets/js/plugin.js') }}"></script>
@@ -169,16 +183,14 @@
 
 <!----- Ckeditor script ---->
     <script>
-      ClassicEditor
-        .create( document.querySelector( '#editor' ) )
-        .then( editor => {
-            console.log( editor );
-        } )
-        .catch( error => {
-            console.error( error );
-        } );
+         initSample();
     </script>
 
+<script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+</script>
 
 </body>
 

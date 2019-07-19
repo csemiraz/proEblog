@@ -46,7 +46,7 @@
 						<div class="form-group row">
 							<label class="col-form-label col-md-3">Description</label>
 							<div class="col-md-9">
-								<textarea id="editor" name="description" class="form-control">{{ $post->description }}</textarea>
+								<textarea id="" name="description" class="form-control">{{ $post->description }}</textarea>
 							</div>
 						</div>
 						<div class="form-group row">

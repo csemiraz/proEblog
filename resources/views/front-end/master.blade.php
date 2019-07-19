@@ -19,11 +19,11 @@
     <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/plugins/swiper/swiper.min.css">
     <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/plugins/noty/noty.min.css">
 
-    <!-- Mimity CSS  -->
-    <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/dist/css/style.min.css">
-
     <!--- Toastr CSS --->
     <link rel="stylesheet" href="{{ asset('assets/toastr/toastr.min.css') }}">
+
+    <!-- Mimity CSS  -->
+    <link rel="stylesheet" href="{{ asset('assets/front-end/') }}/dist/css/style.min.css">
 
   </head>
   <body>
@@ -120,11 +120,11 @@
     <script src="{{ asset('assets/front-end/') }}/plugins/noty/noty.min.js"></script>
     <script src="{{ asset('assets/front-end/') }}/plugins/jquery-countdown/jquery.countdown.min.js"></script>
 
-    <!-- Mimity JS  -->
-    <script src="{{ asset('assets/front-end/') }}/dist/js/script.min.js"></script>
-
     <!---- Toastr Js ----->
     <script src="{{ asset('assets/toastr/toastr.min.js') }}"></script>
+
+    <!-- Mimity JS  -->
+    <script src="{{ asset('assets/front-end/') }}/dist/js/script.min.js"></script>
 
     <script>
     $(function () {
