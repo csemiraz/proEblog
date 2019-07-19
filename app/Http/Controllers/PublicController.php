@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Post;
 use App\Comment;
+use App\Post;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class PublicController extends Controller
 {
@@ -19,6 +20,14 @@ class PublicController extends Controller
     public function singlePost($id)
     {
         $post = Post::find($id);
+
+        //Post view Count
+        $post_key = 'post_' . $post->id;
+        if(!Session::has($post_key)) {
+            $post->increment('view_count');
+            Session::put($post_key, 1);
+        }
+
         $comments = Comment::latest()->where('post_id', $id)->get();
         return view('front-end.singlePost.singlePost', [
             'post'=>$post,

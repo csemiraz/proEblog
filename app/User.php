@@ -52,5 +52,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
+    public function favourite_posts()
+    {
+        return $this->belongsToMany('App\Post')->withTimeStamps();
+    }
+
 
 }

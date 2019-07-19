@@ -47,13 +47,32 @@ HOME
             <div class="card-body">
               <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="title h4">{{ $post->title }}</a>
 
-              <span>{{ Str::limit($post->description, 30) }}</span>
+              {!! Str::limit($post->description, 200) !!}
 
             </div>
             <div class="card-footer flex-center">
               <div class="small text-muted counter">
-                <i data-feather="heart"></i> 55
+                @guest
+                <a href="javascript:void(0)" onclick="toastr.info('To add favourite list, You have to login first', 'Info', {
+                    closeButton: true,
+                    progressBar: true,
+                })">
+                <i data-feather="heart" class="text-secondary"></i> {{ $post->favourite_to_users->count() }}
+                </a>
+                @else
+                <a href="javascript:void(0)" onclick="document.getElementById('favourite-form-{{ $post->id }}').submit(); " 
+                  class="text-secondary" >
+                  <i data-feather="heart" class="{{ Auth::user()->favourite_posts()->where('post_id', $post->id)->count() != 0 ? 'text-success' : '' }}">
+                    
+                  </i> {{ $post->favourite_to_users->count() }}
+                </a>
+                @endguest
+
+                <form id="favourite-form-{{ $post->id }}" action="{{ route('favourite-post', ['id'=>$post->id]) }}" method="post" style="display: none;">
+                  @csrf
+                </form>
                 <i data-feather="message-square" class="ml-3"></i> {{ $post->comments->count() }}
+                <i data-feather="eye" class="ml-3"></i> {{ $post->view_count }}
               </div>
               <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="bold">READ MORE</a>
             </div>

@@ -197,10 +197,10 @@ class PostController extends Controller
     	if(file_exists('assets/images/post/'.$post->image)){
     		unlink(('assets/images/post/'.$post->image));
     	}
+    	
+    	$post->tags->detach();
 
     	$post->delete();
-
-        
 
     	Toastr::success('Post info deleted successfully...', 'Success');
     	return redirect()->back();
@@ -209,6 +209,7 @@ class PostController extends Controller
     public function detailsPost ($id)
     {
     	$post = Post::find($id);
+
     	return view('back-end.admin.post.details-post',[
     		'post' => $post,
     	]);

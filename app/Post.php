@@ -25,4 +25,11 @@ class Post extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function favourite_to_users()
+    {
+        return $this->belongsToMany('App\User')->withTimeStamps();
+    }
+
+
 }
