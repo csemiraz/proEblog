@@ -1,6 +1,6 @@
 @extends('front-end.master')
 @section('title')
-HOME
+Category : Post By Category
 @endsection
 
 @section('mainContent')
@@ -18,19 +18,7 @@ HOME
         <!-- Blog Toolbar -->
         <div class="card">
           <div class="card-body d-flex justify-content-end align-items-center py-2">
-            <span class="mr-auto bold">Latest Blog</span>
-            <div class="dropdown dropdown-hover">
-              <button class="btn btn-light btn-sm border rounded-pill dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Newest <i data-feather="chevron-down"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-right shadow-sm">
-                <button class="dropdown-item" type="button">Newest</button>
-                <button class="dropdown-item" type="button">Oldest</button>
-                <button class="dropdown-item" type="button">Popular</button>
-              </div>
-            </div>
-            <a href="blog-grid.html" class="btn btn-icon rounded-pill btn-sm btn-primary ml-3" data-toggle="tooltip" title="Show Grid"><i data-feather="grid"></i></a>
-            <a href="blog-list.html" class="btn btn-icon rounded-pill btn-sm btn-outline-primary ml-1" data-toggle="tooltip" title="Show List"><i data-feather="list"></i></a>
+            <span class="mr-auto bold text-success">Category : {{ $categoryName->name }}</span>
           </div>
         </div>
         <!-- /Blog Toolbar -->
@@ -41,7 +29,7 @@ HOME
          
         <div class="card-deck card-deck-2-columns mt-3">
 
-          @foreach($posts as $post)
+          @foreach($categoryPosts as $post)
           <div class="card card-blog">
             <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="zoom-hover"><img src="{{ asset('assets/images/post/'.$post->image) }}" alt="{{ $post->title }}"></a>
             <div class="card-body">
@@ -85,7 +73,7 @@ HOME
 
         <!-- Pagination -->
        
-          {{ $posts->links() }}
+          {{ $categoryPosts->links() }}
         
         <!-- /Pagination -->
 

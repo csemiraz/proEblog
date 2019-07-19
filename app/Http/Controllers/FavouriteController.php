@@ -6,6 +6,8 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Post;
+
 class FavouriteController extends Controller
 {
     public function favouritePost($id)
@@ -28,4 +30,11 @@ class FavouriteController extends Controller
     		return redirect()->back();
     	}
     }
+
+
+    
+
+
+
+
 }

@@ -6,6 +6,7 @@ use App\Comment;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Category;
 
 class PublicController extends Controller
 {
@@ -34,6 +35,17 @@ class PublicController extends Controller
             'comments' => $comments,
         ]);
     }
+
+    public function categoryPost($id)
+    {
+        $categoryName = Category::find($id);
+        $categoryPosts = Post::latest()->where('category_id', $id)->where('status', 1)->where('approval_status', 1)->paginate(4);
+        return view('front-end.post.category-post', [
+            'categoryPosts' => $categoryPosts,
+            'categoryName' => $categoryName,
+        ]);
+    }
+
 
    
 
