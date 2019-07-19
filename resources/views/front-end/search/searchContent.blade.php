@@ -18,7 +18,7 @@ Category : Post By Category
         <!-- Blog Toolbar -->
         <div class="card">
           <div class="card-body d-flex justify-content-end align-items-center py-2">
-            <span class="mr-auto bold text-success">Category : {{ $categoryName->name }}</span>
+            <span class="mr-auto bold"><b class="text-success">Found: {{ $posts->count() }},</b> Sarching for:  {{ $query }}</span>
           </div>
         </div>
         <!-- /Blog Toolbar -->
@@ -28,8 +28,10 @@ Category : Post By Category
             <!-- Blog Grid -->
          
         <div class="card-deck card-deck-2-columns mt-3">
+            
+          @if($posts->count() > 0)
 
-          @foreach($categoryPosts as $post)
+          @foreach($posts as $post)
           <div class="card card-blog">
             <a href="{{ route('single-post', ['id'=>$post->id, 'slug'=>$post->slug]) }}" class="zoom-hover"><img src="{{ asset('assets/images/post/'.$post->image) }}" alt="{{ $post->title }}"></a>
             <div class="card-body">
@@ -67,13 +69,19 @@ Category : Post By Category
           </div>
        
           @endforeach
+
+          @else
+          <div class="card-body">
+            <h1 class="text-danger">Sorry, No post found :( </h1>
+          </div>
+          @endif
         </div>
         <!-- /Blog Grid -->
         
 
         <!-- Pagination -->
        
-          {{ $categoryPosts->links() }}
+          
         
         <!-- /Pagination -->
 

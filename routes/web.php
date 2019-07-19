@@ -16,6 +16,7 @@ Route::get('post/{id}/{slug}', 'PublicController@singlePost')->name('single-post
 Route::post('post/post-comment', 'CommentController@commentPost')->middleware('auth')->name('post-comment');
 Route::post('post/favourite-post/{id}', 'FavouriteController@favouritePost')->middleware('auth')->name('favourite-post');
 Route::get('category/category-post/{id?}', 'PublicController@categoryPost')->name('category-post');
+Route::get('search', 'SearchController@search')->name('search');
 
 /* Admin Routing */
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'admin']], function() {

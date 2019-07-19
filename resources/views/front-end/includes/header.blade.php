@@ -16,12 +16,6 @@
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="shop-categories.html">Shop Categories</a>
-            <a class="dropdown-item" href="shop-grid.html">Shop Grid</a>
-            <a class="dropdown-item" href="shop-list.html">Shop List</a>
-            <a class="dropdown-item" href="shop-single.html">Single Product</a>
-            <a class="dropdown-item" href="shop-single2.html">Single Product v2</a>
-            <a class="dropdown-item" href="cart.html">Cart</a>
-            <a class="dropdown-item" href="shipping.html">Checkout</a>
           </div>
         </li>
         <li class="nav-item dropdown dropdown-hover dropdown-mega">
@@ -117,12 +111,13 @@
       <!-- /Main navigation -->
 
       <!-- Search form -->
-      <form class="form-inline form-search ml-auto mr-0 mr-sm-1 d-none d-sm-flex">
+      <form action="{{ route('search') }}" method="get" class="form-inline form-search ml-auto mr-0 mr-sm-1 d-none d-sm-flex">
+       
         <div class="input-group input-group-search">
           <div class="input-group-prepend">
             <button class="btn btn-light d-flex d-sm-none search-toggle" type="button"><i data-feather="chevron-left"></i></button>
           </div>
-          <input type="text" class="form-control border-0 bg-light input-search" placeholder="Search...">
+          <input name="query" type="text" class="form-control border-0 bg-light input-search" placeholder="Search...">
           <div class="input-group-append">
             <button class="btn btn-light" type="submit"><i data-feather="search"></i></button>
           </div>
