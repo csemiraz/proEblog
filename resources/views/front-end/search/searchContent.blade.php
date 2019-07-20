@@ -81,7 +81,7 @@ Category : Post By Category
 
         <!-- Pagination -->
        
-          
+          {{ $posts->links() }}
         
         <!-- /Pagination -->
 

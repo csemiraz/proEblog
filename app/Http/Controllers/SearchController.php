@@ -11,7 +11,10 @@ class SearchController extends Controller
     {
     	$query = $request->input('query');
 
-    	$posts = Post::where('title', 'LIKE', "%$query%")->get();
+    	$posts = Post::where('title', 'LIKE', "%$query%")
+    				 ->where('status', 1)
+    				 ->where('approval_status', 1)
+    				 ->paginate(4);	
 
     	return view('front-end.search.searchContent', compact('posts', 'query'));
     }
