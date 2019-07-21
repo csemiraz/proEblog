@@ -39,18 +39,36 @@ Post : Single Post
               <hr>
 
               <!-- Blog Comments -->
+              @guest
               <h3>Comments</h3>
               <div class="media my-4">
                 <a href="javascript:void(0)"><img src="" alt="User" width="45" height="45" class="rounded-circle"></a>
                 <div class="media-body ml-2 ml-sm-3">
-                  <form action="{{ route('post-comment') }}" method="post">
-                  	@csrf
                   	<textarea name="comment" rows="2" placeholder="Leave a comment" class="form-control border autosize"></textarea>
+                  	<a href="javascript:void" onclick="toastr.info('Please login or registration first to comment...', 'Info', {
+                    closeButton: true,
+                    progressBar: true,
+                })">
+                     <button class="btn btn-sm btn-light border border-top-0 btn-block">Post</button> 
+                    </a>
+                </div>
+              </div>
+              @else
+              
+              <div class="media my-4">
+                <a href="javascript:void(0)"><img src="" alt="User" width="45" height="45" class="rounded-circle"></a>
+                <div class="media-body ml-2 ml-sm-3">
+                  <form action="{{ route('post-comment') }}" method="post">
+                    @csrf
+                    <textarea name="comment" rows="2" placeholder="Leave a comment" class="form-control border autosize"></textarea>
                     <input type="hidden" name="post_id" value="{{ $post->id }}">
-                  	<button class="btn btn-sm btn-light border border-top-0 btn-block">Post</button>
+                    <button type="submit" class="btn btn-sm btn-light border border-top-0 btn-block">Post</button>
                   </form>
                 </div>
               </div>
+
+              @endguest
+
 
               <!-- Display Blog Comments -->
               @foreach($comments as $comment)
@@ -117,7 +135,7 @@ Post : Single Post
             <div class="card-body">
               <div class="btn-group-scatter">
               	@foreach($categories as $category)
-                <a href="javascript:void(0)" class="btn btn-light rounded-pill">{{ $category->name }}</a>
+                <a href="{{ route('category-post', ['id'=>$category->id]) }}" class="btn btn-light rounded-pill">{{ $category->name }}</a>
               	@endforeach
               </div>
             </div>

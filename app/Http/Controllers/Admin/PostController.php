@@ -225,6 +225,12 @@ class PostController extends Controller
     	return redirect()->back();
     }
 
+    public function pendingPost()
+    {
+        $posts = Post::latest()->where('approval_status', 0)->get();
+        return view('back-end.admin.post.pending-post', compact('posts'));
+    }
+
 
 
 }

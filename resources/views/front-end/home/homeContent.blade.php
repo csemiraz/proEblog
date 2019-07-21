@@ -29,8 +29,6 @@ HOME
                 <button class="dropdown-item" type="button">Popular</button>
               </div>
             </div>
-            <a href="blog-grid.html" class="btn btn-icon rounded-pill btn-sm btn-primary ml-3" data-toggle="tooltip" title="Show Grid"><i data-feather="grid"></i></a>
-            <a href="blog-list.html" class="btn btn-icon rounded-pill btn-sm btn-outline-primary ml-1" data-toggle="tooltip" title="Show List"><i data-feather="list"></i></a>
           </div>
         </div>
         <!-- /Blog Toolbar -->

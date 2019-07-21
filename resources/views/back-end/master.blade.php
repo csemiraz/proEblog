@@ -27,10 +27,6 @@
   <!------ Bootstrap select css---->
   <link rel="stylesheet" href="{{ asset('assets/bootstrap-select/bootstrap-select.min.css') }}">
 
-
-    <!-- Ck Editor -->
-    <link rel="stylesheet" href="{{ asset('assets/ckeditor/samples/css/samples.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/ckeditor/samples/toolbarconfigurator/lib/codemirror/neo.css') }}">
     
 
   
@@ -116,13 +112,6 @@
   <!------ Bootstrap select js---->
   <script src="{{ asset('assets/bootstrap-select/bootstrap-select.min.js') }}"></script>
 
-  <!------ Tiny MCE JS  ------->
-  <script src="{{ asset('assets/tinymce/js/tinymce/tinymce.min.js') }}"></script>
-
-  <!------ Ck editor js ----->
-  <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
-  <script src="{{ asset('assets/ckeditor/samples/js/sample.js') }}"></script>
-
 
 
 
@@ -181,16 +170,6 @@
   </script>
 
 
-<!----- Ckeditor script ---->
-    <script>
-         initSample();
-    </script>
-
-<script>
-  tinymce.init({
-    selector: '#mytextarea'
-  });
-</script>
 
 </body>
 

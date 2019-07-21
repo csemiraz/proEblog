@@ -54,6 +54,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 	Route::post('post/delete-post/{id}', 'PostController@deletePost')->name('delete-post');
 	Route::get('post/details-post/{id}', 'PostController@detailsPost')->name('details-post');
 	Route::get('post/approve-post/{id}', 'PostController@approvePost')->name('approve-post');
+	Route::get('post/pending-post', 'PostController@pendingPost')->name('pending-post');
 
 
 
