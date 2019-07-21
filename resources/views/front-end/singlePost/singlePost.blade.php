@@ -73,7 +73,7 @@ Post : Single Post
               <!-- Display Blog Comments -->
               @foreach($comments as $comment)
               <div class="media">
-                <a href="javascript:void(0)"><img src="../img/user/user1.svg" alt="User" width="45" height="45" class="rounded-circle"></a>
+                <a href="javascript:void(0)"><img src="{{ asset('assets/images/default/'.$comment->user->image) }}" alt="User" width="45" height="45" class="rounded-circle"></a>
                 <div class="media-body ml-2 ml-sm-3">
                   <div class="d-flex flex-wrap">
                     <a href="javascript:void(0)" class="mr-2">{{ $comment->user->name }}</a>

@@ -19,6 +19,8 @@ Route::get('category/category-post/{id?}', 'PublicController@categoryPost')->nam
 Route::get('search', 'SearchController@search')->name('search');
 Route::post('subscriber', 'SubscriberController@subscriber')->name('subscriber');
 
+
+
 /* Admin Routing */
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'admin']], function() {
 	Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
@@ -43,7 +45,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 	Route::get('tag/unpublish-tag/{id}', 'TagController@unpublishTag')->name('unpublish-tag');
 	Route::post('tag/delete-tag/{id}', 'TagController@deleteTag')->name('delete-tag');
 
-	/*  Posrt Routing  */
+	/*  Post Routing  */
 	Route::get('post/manage-post', 'PostController@managePost')->name('manage-post');
 	Route::get('post/add-post', 'PostController@addPost')->name('add-post');
 	Route::post('post/store-post', 'PostController@storePost')->name('store-post');
@@ -55,6 +57,15 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 	Route::get('post/details-post/{id}', 'PostController@detailsPost')->name('details-post');
 	Route::get('post/approve-post/{id}', 'PostController@approvePost')->name('approve-post');
 	Route::get('post/pending-post', 'PostController@pendingPost')->name('pending-post');
+
+	/*  Subscriber Routing  */
+	Route::get('manage-subscriber', 'SubscriberController@manageSubscriber')->name('manage-subscriber');
+	Route::post('delete-subscriber/{id}', 'SubscriberController@deleteSubscriber')->name('delete-subscriber');
+
+	/*  Profile Settings  */
+	Route::get('profile', 'SettingsController@index')->name('admin.profile');
+	Route::post('update-profile', 'SettingsController@updateProfile')->name('admin.update-profile');
+	Route::post('change-password', 'SettingsController@changePassword')->name('admin.change-password');
 
 
 
@@ -68,7 +79,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'Author', 'middleware'=>['auth', 'author']], function() {
 	Route::get('dashboard', 'AuthorController@index')->name('dashboard');
 
-		/*  Posrt Routing  */
+		/*  Post Routing  */
 	Route::get('post/manage-post', 'PostController@managePost')->name('manage-post');
 	Route::get('post/add-post', 'PostController@addPost')->name('add-post');
 	Route::post('post/store-post', 'PostController@storePost')->name('store-post');
@@ -79,9 +90,20 @@ Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'Author', 'middl
 	Route::post('post/delete-post/{id}', 'PostController@deletePost')->name('delete-post');
 	Route::get('post/details-post/{id}', 'PostController@detailsPost')->name('details-post');
 
+	/*  Profile Settings  */
+	Route::get('profile', 'SettingsController@index')->name('profile');
+	Route::post('update-profile', 'SettingsController@updateProfile')->name('update-profile');
+	Route::post('change-password', 'SettingsController@changePassword')->name('change-password');
+
 });
 
 /* User Routing */
 Route::group(['prefix'=>'user', 'namespace'=>'User', 'middleware'=>['auth', 'user']], function() {
 	Route::get('dashboard', 'UserController@index')->name('user.dashboard');
+
+	/*  Profile Settings  */
+	Route::get('profile', 'SettingsController@index')->name('user.profile');
+	Route::post('update-profile', 'SettingsController@updateProfile')->name('user.update-profile');
+	Route::post('change-password', 'SettingsController@changePassword')->name('user.change-password');
+
 });

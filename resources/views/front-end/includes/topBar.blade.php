@@ -40,7 +40,7 @@
         @csrf
       </form>
 
-      @endif
+      @endguest
 
       <!-- User dropdown -->
       @if(Auth::user())

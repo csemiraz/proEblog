@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 
 class RegisterController extends Controller
 {
@@ -60,10 +62,38 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:120', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'about' => ['min:8', 'max:255'],
+            'image' => ['image']
         ]);
+    }
+
+    /* User image */
+
+    public function image()
+    {
+        $request = request();
+        $image = $request->file('image');
+        $slug = str_slug($request->name);
+
+        if(isset($image)){
+            $currentDate = Carbon::now()->toDateString();
+            $imageExtension = $image->getClientOriginalExtension();
+            $imageName = $slug.'-'.$currentDate.'-'.time().'.'.$imageExtension;
+
+            $imagePath = 'assets/images/user/';
+            if(!file_exists($imagePath)){
+                mkdir($imagePath, 666, true);
+            }
+
+            Image::make($image)->resize(360,360)->save($imagePath.$imageName);
+        }
+        else{
+            $imageName = 'user.png';
+        }
+        return $imageName;
     }
 
     /**
@@ -74,10 +104,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $imageName = $this->image();
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'about' => $data['about'],
+            'image' => $imageName,
         ]);
     }
 }

@@ -145,7 +145,7 @@ class PostController extends Controller
     	$post->slug = str_slug($request->title, '-');
     	$post->description = $request->description;
     	
-    	if(file_exists($post->image!=$imageName && 'assets/images/post/'.$post->image)){
+    	if(file_exists('assets/images/post/'.$post->image) && $post->image!=$imageName){
     		unlink(('assets/images/post/'.$post->image));
     	}
 
