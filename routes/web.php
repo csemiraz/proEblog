@@ -18,6 +18,8 @@ Route::post('post/favourite-post/{id}', 'FavouriteController@favouritePost')->mi
 Route::get('category/category-post/{id?}', 'PublicController@categoryPost')->name('category-post');
 Route::get('search', 'SearchController@search')->name('search');
 Route::post('subscriber', 'SubscriberController@subscriber')->name('subscriber');
+Route::get('oldest-post', 'PostController@oldestPost')->name('oldest-post');
+Route::get('popular-post', 'PostController@popularPost')->name('popular-post');
 
 
 

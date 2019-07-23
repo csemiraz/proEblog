@@ -1,6 +1,6 @@
 @extends('front-end.master')
 @section('title')
-HOME
+Post : Oldest Post
 @endsection
 
 @section('mainContent')
@@ -18,7 +18,7 @@ HOME
         <!-- Blog Toolbar -->
         <div class="card">
           <div class="card-body d-flex justify-content-end align-items-center py-2">
-            <span class="mr-auto bold">Latest Posts</span>
+            <span class="mr-auto bold">Oldest Posts</span>
             <div class="dropdown dropdown-hover">
               <button class="btn btn-light btn-sm border rounded-pill dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Newest <i data-feather="chevron-down"></i>

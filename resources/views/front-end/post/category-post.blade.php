@@ -83,35 +83,52 @@ Category : Post By Category
       <div class="col-md-4 col-lg-4 mt-3 mt-md-0">
         <div class="card">
           <div class="card-header bg-white border-bottom bold roboto-condensed">
-            <h5 class="bold mb-0">POPULAR THIS <span class="text-primary">WEEK</span></h5>
+            <h5 class="bold mb-0">MOST<span class="text-primary"> VIEWED</span> POSTS</h5>
           </div>
           <div class="card-body">
 
             <div class="row">
+              
+              @foreach($mvPosts as $mvPost)
               <div class="col-12 col-sm-6 col-md-12">
-                <div class="card card-blog shadow-none">
-                  <a href="blog-single.html" class="zoom-hover"><img src="{{ asset('assets/front-end/') }}/img/blog/3.jpg" alt="Blog"></a>
-                  <div class="card-body p-0 text-center">
-                    <a href="blog-single.html" class="title h5 mt-3">5 Simple Outfits for Men</a>
-                    <div class="small text-muted">
-                      <i data-feather="heart"></i> 55 Likes
-                      <i data-feather="message-square" class="ml-3"></i> 15 Comments
+                <div class="card card-blog mb-3">
+                  <a href="{{ route('single-post', ['id'=>$mvPost->id, 'slug'=>$mvPost->slug]) }}" class="zoom-hover"><img src="{{ asset('assets/images/post/'.$mvPost->image) }}" alt="{{ $mvPost->title }}"></a>
+                  <div class="card-body">
+                    <a href="{{ route('single-post', ['id'=>$mvPost->id, 'slug'=>$mvPost->slug]) }}" class="title h4">{{ $mvPost->title }}</a>
+
+                    {!! Str::limit($mvPost->description, 200) !!}
+
+                  </div>
+                  <div class="card-footer flex-center">
+                    <div class="small text-muted counter">
+                      @guest
+                      <a href="javascript:void(0)" onclick="toastr.info('To add favourite list, You have to login first', 'Info', {
+                          closeButton: true,
+                          progressBar: true,
+                      })">
+                      <i data-feather="heart" class="text-secondary"></i> {{ $mvPost->favourite_to_users->count() }}
+                      </a>
+                      @else
+                      <a href="javascript:void(0)" onclick="document.getElementById('favourite-form-{{ $mvPost->id }}').submit(); " 
+                        class="text-secondary" >
+                        <i data-feather="heart" class="{{ Auth::user()->favourite_posts()->where('post_id', $mvPost->id)->count() != 0 ? 'text-success' : '' }}">
+                          
+                        </i> {{ $mvPost->favourite_to_users->count() }}
+                      </a>
+                      @endguest
+
+                      <form id="favourite-form-{{ $mvPost->id }}" action="{{ route('favourite-post', ['id'=>$mvPost->id]) }}" method="post" style="display: none;">
+                        @csrf
+                      </form>
+                      <i data-feather="message-square" class="ml-3"></i> {{ $mvPost->comments->count() }}
+                      <i data-feather="eye" class="ml-3"></i> {{ $mvPost->view_count }}
                     </div>
+                    <a href="{{ route('single-post', ['id'=>$mvPost->id, 'slug'=>$mvPost->slug]) }}" class="bold">READ MORE</a>
                   </div>
                 </div>
               </div>
-              <div class="col-12 col-sm-6 col-md-12 mt-4 mt-sm-0 mt-md-4">
-                <div class="card card-blog shadow-none">
-                  <a href="blog-single.html" class="zoom-hover"><img src="{{ asset('assets/front-end/') }}/img/blog/4.jpg" alt="Blog"></a>
-                  <div class="card-body p-0 text-center">
-                    <a href="blog-single.html" class="title h5 mt-3">Business Casual Outfit Ideas</a>
-                    <div class="small text-muted">
-                      <i data-feather="heart"></i> 55 Likes
-                      <i data-feather="message-square" class="ml-3"></i> 15 Comments
-                    </div>
-                  </div>
-                </div>
-              </div>
+              @endforeach
+
             </div>
 
           </div>

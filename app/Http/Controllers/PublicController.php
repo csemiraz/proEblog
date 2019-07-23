@@ -30,9 +30,12 @@ class PublicController extends Controller
         }
 
         $comments = Comment::latest()->where('post_id', $id)->get();
+        $randomPosts = Post::where('status', 1)->where('approval_status', 1)->take(2)->inRandomOrder()->get();
+
         return view('front-end.singlePost.singlePost', [
             'post'=>$post,
             'comments' => $comments,
+            'randomPosts' => $randomPosts,
         ]);
     }
 
