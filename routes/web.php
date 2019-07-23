@@ -25,7 +25,7 @@ Route::get('popular-post', 'PostController@popularPost')->name('popular-post');
 
 /* Admin Routing */
 Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'admin']], function() {
-	Route::get('dashboard', 'AdminController@index')->name('admin.dashboard');
+	Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 
 	/*Category Routing*/
 	Route::get('category/add-category', 'CategoryController@addCategory')->name('add-category');
@@ -69,7 +69,11 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 	Route::post('update-profile', 'SettingsController@updateProfile')->name('admin.update-profile');
 	Route::post('change-password', 'SettingsController@changePassword')->name('admin.change-password');
 
+	/*Dashboard Routing*/
 
+	Route::post('delete-active-author/{id}', 'DashboardController@deleteActiveAuthor')->name('delete-active-author');
+	Route::post('delete-active-user/{id}', 'DashboardController@deleteActiveUser')->name('delete-active-user');
+	Route::post('delete-popular-post/{id}', 'DashboardController@deletePopularPost')->name('delete-popular-post');
 
 
 });
@@ -79,7 +83,7 @@ Route::group(['prefix'=>'admin', 'namespace'=>'Admin', 'middleware'=>['auth', 'a
 
 /* Author Routing */
 Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'Author', 'middleware'=>['auth', 'author']], function() {
-	Route::get('dashboard', 'AuthorController@index')->name('dashboard');
+	Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
 		/*  Post Routing  */
 	Route::get('post/manage-post', 'PostController@managePost')->name('manage-post');
@@ -96,12 +100,16 @@ Route::group(['as'=>'author.', 'prefix'=>'author', 'namespace'=>'Author', 'middl
 	Route::get('profile', 'SettingsController@index')->name('profile');
 	Route::post('update-profile', 'SettingsController@updateProfile')->name('update-profile');
 	Route::post('change-password', 'SettingsController@changePassword')->name('change-password');
+	/*  Dashboard Routing   */
+	Route::post('delete-popular-post/{id}', 'DashboardController@deletePopularPost')->name('delete-popular-post');
 
 });
 
+
+
 /* User Routing */
 Route::group(['prefix'=>'user', 'namespace'=>'User', 'middleware'=>['auth', 'user']], function() {
-	Route::get('dashboard', 'UserController@index')->name('user.dashboard');
+	Route::get('dashboard', 'DashboardController@index')->name('user.dashboard');
 
 	/*  Profile Settings  */
 	Route::get('profile', 'SettingsController@index')->name('user.profile');
