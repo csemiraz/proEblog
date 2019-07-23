@@ -8,6 +8,12 @@
         <a class="nav-link px-2" href="javascript:void(0)"><i data-feather="instagram"></i></a>
       </nav>
 
+      <nav class="nav">
+        <a class="nav-link pl-5 bold" href="javascript:void(0)">
+          {{ date('F j, Y') }}
+        </a>
+      </nav>
+
       <!-- User Authincation -->
       @guest
       <nav class="nav nav-lang ml-auto">

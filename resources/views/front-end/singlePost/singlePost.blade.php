@@ -16,7 +16,7 @@ Post : Single Post
               <ul class="list-inline">
                 <li class="list-inline-item"><small><i data-feather="clock"></i> {{ $post->created_at->toFormattedDateString() }}</small></li>
                 <li class="list-inline-item"><small><i data-feather="user"></i> <a href="javascript:void(0)" class="text-muted">{{ $post->user->name }}</a></small></li>
-                <li class="list-inline-item"><small><i data-feather="tag"></i> <a href="javascript:void(0)" class="text-muted">{{ $post->category->name }}</a></small></li>
+                <li class="list-inline-item"><small><i data-feather="tag"></i> <a href="{{ route('category-post', ['id'=>$post->category_id]) }}" class="text-muted">{{ $post->category->name }}</a></small></li>
               </ul>
 
               <!-- Blog Content -->

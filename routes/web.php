@@ -21,6 +21,10 @@ Route::post('subscriber', 'SubscriberController@subscriber')->name('subscriber')
 Route::get('oldest-post', 'PostController@oldestPost')->name('oldest-post');
 Route::get('popular-post', 'PostController@popularPost')->name('popular-post');
 
+/*  HTTP Request Routing  */
+Route::get('404', 'ErrorHandlerController@error404')->name('404');
+Route::get('405', 'ErrorHandlerController@error405')->name('405');
+
 
 
 /* Admin Routing */
